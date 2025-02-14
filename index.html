@@ -31,97 +31,63 @@
             background-color: #C83F3F;
             color: white;
         }
-  
         p {
             font-size: 25px;
         }
-
-        /* Media Queries for responsive design */
-        @media (max-width: 600px) {
-            p {
-                font-size: 20px;
-            }
-
-            #green-btn, #red-btn {
-                font-size: 16px;
-                width: 90%;
-            }
-
-            #image {
-                width: 100%;
-                max-width: 250px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            p {
-                font-size: 18px;
-            }
-
-            #green-btn, #red-btn {
-                font-size: 14px;
-                width: 90%;
-            }
-
-            #image {
-                width: 100%;
-                max-width: 200px;
-            }
-        }
-
     </style>
 </head>
 <body>
-
     <img id="image" src="KISS.gif" alt="Kiss Image">
     <p>ممكن تصير الفلنتاين بتاعي؟</p>
     <button id="red-btn" onclick="handleRedButton()">لا تخسين</button>
     <button id="green-btn" onclick="handleGreenButton()">اككككيد</button>
+
+    <audio id="cry-sound" src="cry cat.mp4"></audio>
+    <audio id="angry-sound" src="angry cat.mp4"></audio>
+    <audio id="happy-sound" src="happy cat.mp4"></audio>
 
     <script>
         let redBtnClicks = 0;
         const redBtn = document.getElementById("red-btn");
         const greenBtn = document.getElementById("green-btn");
         const image = document.getElementById("image");
-        const body = document.body;
+        const crySound = document.getElementById("cry-sound");
+        const angrySound = document.getElementById("angry-sound");
+        const happySound = document.getElementById("happy-sound");
 
         function handleRedButton() {
             redBtnClicks++;
-
+            redBtn.style.width = `${80 + redBtnClicks * 5}%`;
+            redBtn.style.height = `${50 + redBtnClicks * 5}px`;
+            
             if (redBtnClicks === 1) {
                 redBtn.innerText = "افا ليههه :(";
-                greenBtn.style.width = "80%";
-                greenBtn.style.height = "50px";
-                greenBtn.innerText = "اككككيد ";
                 image.src = "SAD.jpeg";
+                crySound.play();
             } else if (redBtnClicks === 2) {
                 redBtn.innerText = "متأكد ماتبي؟";
-                greenBtn.style.width = "90%";
-                greenBtn.style.height = "60px";
-                greenBtn.innerText = "اككككيد (مش هقدر اصبر)";
                 image.src = "SadMidFing.jpeg";
+                crySound.play();
             } else if (redBtnClicks === 3) {
                 redBtn.innerText = "مو على كيفكك!!!";
-                greenBtn.style.width = "95%";
-                greenBtn.style.height = "70px";
-                greenBtn.innerText = "اككككيد (اها عاد) ";
                 image.src = "ANGRY.jpeg";
+                angrySound.play();
             } else if (redBtnClicks === 4) {
                 redBtn.innerText = "انثبر بس وقول اي";
-                greenBtn.style.width = "100%";
-                greenBtn.style.height = "80px";
-                greenBtn.innerText = "اككككيد (تكفى يالمكيف !) ";
                 image.src = "with anger.gif";
+                angrySound.play();
             }
         }
 
         function handleGreenButton() {
-            body.style.backgroundImage = "url('BACKGROUND.gif')";
+            document.body.style.backgroundImage = "url('BACKGROUND.gif')";
             image.src = "HAPPY.gif";
             redBtn.style.display = "none";
             greenBtn.style.display = "none";
             document.querySelector("p").innerText = "شكككرا لك يا احلى فلنطاين";
+            happySound.play();
         }
     </script>
 </body>
 </html>
+
