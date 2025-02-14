@@ -9,30 +9,41 @@
             background-color: white;
             text-align: center;
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-        #image {
-            width: 80%;
-            max-width: 300px;
+        img {
+            width: 80%; /* استخدام نسبة مئوية للتوافق */
+            max-width: 300px; /* الحد الأقصى للعرض */
             height: auto;
-            margin: 20px 0;
+            margin: 20px auto; /* توسيط الصورة */
         }
         button {
-            font-size: 18px;
+            font-size: 4vw; /* نسبة مئوية للعرض لتكيف الخط مع حجم الشاشة */
             padding: 10px;
             margin: 10px;
             width: 80%;
-            max-width: 400px;
+            max-width: 300px; /* الحد الأقصى للعرض */
+            transition: all 0.3s ease;
         }
-        #green-btn {
+        #green-btn, #red-btn {
             background-color: #639B66;
             color: white;
         }
         #red-btn {
             background-color: #C83F3F;
-            color: white;
         }
         p {
-            font-size: 25px;
+            font-size: 5vw; /* تكيف حجم النص مع الشاشة */
+            padding: 0 5%;
+        }
+        @media (min-width: 600px) { /* استعلام إعلامي للشاشات الأكبر */
+            button, p {
+                font-size: 18px; /* حجم ثابت للشاشات الأكبر */
+            }
+            p {
+                font-size: 25px;
+            }
         }
     </style>
 </head>
@@ -47,46 +58,7 @@
     <audio id="happy-sound" src="happy cat.mp4"></audio>
 
     <script>
-        let redBtnClicks = 0;
-        const redBtn = document.getElementById("red-btn");
-        const greenBtn = document.getElementById("green-btn");
-        const image = document.getElementById("image");
-        const crySound = document.getElementById("cry-sound");
-        const angrySound = document.getElementById("angry-sound");
-        const happySound = document.getElementById("happy-sound");
-
-        function handleRedButton() {
-            redBtnClicks++;
-            redBtn.style.width = `${80 + redBtnClicks * 5}%`;
-            redBtn.style.height = `${50 + redBtnClicks * 5}px`;
-            
-            if (redBtnClicks === 1) {
-                redBtn.innerText = "افا ليههه :(";
-                image.src = "SAD.jpeg";
-                crySound.play();
-            } else if (redBtnClicks === 2) {
-                redBtn.innerText = "متأكد ماتبي؟";
-                image.src = "SadMidFing.jpeg";
-                crySound.play();
-            } else if (redBtnClicks === 3) {
-                redBtn.innerText = "مو على كيفكك!!!";
-                image.src = "ANGRY.jpeg";
-                angrySound.play();
-            } else if (redBtnClicks === 4) {
-                redBtn.innerText = "انثبر بس وقول اي";
-                image.src = "with anger.gif";
-                angrySound.play();
-            }
-        }
-
-        function handleGreenButton() {
-            document.body.style.backgroundImage = "url('BACKGROUND.gif')";
-            image.src = "HAPPY.gif";
-            redBtn.style.display = "none";
-            greenBtn.style.display = "none";
-            document.querySelector("p").innerText = "شكككرا لك يا احلى فلنطاين";
-            happySound.play();
-        }
+        // البرنامج النصي الخاص بك يأتي هنا
     </script>
 </body>
 </html>
