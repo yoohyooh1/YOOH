@@ -58,7 +58,60 @@
     <audio id="happy-sound" src="happy cat.mp4"></audio>
 
     <script>
-        // البرنامج النصي الخاص بك يأتي هنا
+        let redBtnClicks = 0;
+        const redBtn = document.getElementById("red-btn");
+        const greenBtn = document.getElementById("green-btn");
+        const image = document.getElementById("image");
+        const crySound = document.getElementById("cry-sound");
+        const angrySound = document.getElementById("angry-sound");
+        const happySound = document.getElementById("happy-sound");
+
+        function handleRedButton() {
+            redBtnClicks++;
+            greenBtn.style.transform = `scale(${1 + redBtnClicks * 0.1})`; // تكبير الزر الأخضر
+
+            stopAllSounds(); // إيقاف كل الأصوات قبل تشغيل صوت جديد
+
+            if (redBtnClicks === 1) {
+                redBtn.innerText = "افا ليههه :(";
+                image.src = "SAD.jpeg";
+                crySound.play();
+            } else if (redBtnClicks === 2) {
+                redBtn.innerText = "متأكد ماتبي؟";
+                image.src = "SadMidFing.jpeg";
+                crySound.play();
+            } else if (redBtnClicks === 3) {
+                redBtn.innerText = "مو على كيفكك!!!";
+                image.src = "ANGRY.jpeg";
+                angrySound.play();
+            } else if (redBtnClicks === 4) {
+                redBtn.innerText = "انثبر بس وقول اي";
+                image.src = "with anger.gif";
+                angrySound.play();
+            }
+        }
+
+        function handleGreenButton() {
+            greenBtn.style.transform = `scale(${1.5})`; // تكبير الزر الأخضر بشكل ثابت
+
+            stopAllSounds(); // إيقاف كل الأصوات
+
+            document.body.style.backgroundImage = "url('BACKGROUND.gif')";
+            image.src = "HAPPY.gif";
+            redBtn.style.display = "none";
+            greenBtn.style.display = "none";
+            document.querySelector("p").innerText = "شكككرا لك يا احلى فلنطاين";
+            happySound.play();
+        }
+
+        function stopAllSounds() {
+            crySound.pause();
+            crySound.currentTime = 0;
+            angrySound.pause();
+            angrySound.currentTime = 0;
+            happySound.pause();
+            happySound.currentTime = 0;
+        }
     </script>
 </body>
 </html>
